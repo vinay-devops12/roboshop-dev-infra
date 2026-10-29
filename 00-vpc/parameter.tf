@@ -6,11 +6,11 @@ resource "aws_ssm_parameter" "vpc_id" {
   overwrite   = true
 }
 
-resource "aws_ssm_parameter" "public_subnets-ids" {
-  name        = "/${var.project}/${var.environment}/public_subnets-ids"
+resource "aws_ssm_parameter" "public_subnet-ids" {
+  name        = "/${var.project}/${var.environment}/public_subnet-ids"
   description = "Comma-separated public subnet IDs"
-  type        = "String"
-  value = join(",", module.vpc.public_subnet_ids)
+  type        = "StringList"
+  value       = join(",", module.vpc.public_subnet_ids)
   overwrite   = true
 }
 
