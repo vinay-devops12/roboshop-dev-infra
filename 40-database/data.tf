@@ -3,7 +3,7 @@ data "aws_ssm_parameter" "mongodb_sg_id" {
 }
 # Fetch the database subnet IDs stored in SSM
 data "aws_ssm_parameter" "database_subnet_ids" {
-  name = "/${var.project}/${var.environment}/database_subne-ids"
+  name = "/${var.project}/${var.environment}/database_subnet_ids"
 }
 data "aws_ami" "joindevops" {
   most_recent      = true
