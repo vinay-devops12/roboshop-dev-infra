@@ -8,7 +8,7 @@ terraform {
 
   # remote state storage location
   backend "s3" {
-    bucket         = "remote-state-90ss-dev"
+    bucket         = "remote-state-90s-dev"
     key            = "database.tfstate"
     region         = "us-east-1"
     encrypt        = true
