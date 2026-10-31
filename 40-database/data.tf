@@ -1,5 +1,5 @@
 data "aws_ssm_parameter" "mongodb_sg_id" {
-  name = "/${var.project}/${var.environment}/bastion_sg_id"
+  name = "/${var.project}/${var.environment}/mongodb_sg_id"
 }
 # Fetch the database subnet IDs stored in SSM
 data "aws_ssm_parameter" "database_subnet_ids" {
