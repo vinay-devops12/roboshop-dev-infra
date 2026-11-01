@@ -16,7 +16,6 @@
 
 #!/bin/bash
 set -ex
-
 component=$1
 environment=$2
 
