@@ -1,17 +1,19 @@
 data "aws_ssm_parameter" "mongodb_sg_id" {
   name = "/${var.project}/${var.environment}/mongodb_sg_id"
 }
+
 # Fetch the database subnet IDs stored in SSM
 data "aws_ssm_parameter" "database_subnet_ids" {
   name = "/${var.project}/${var.environment}/database_subnet_ids"
 }
+
 data "aws_ami" "joindevops" {
-  most_recent      = true
-  owners           = ["973714476881"]
+  most_recent = true
+  owners      = ["973714476881"]
 
   filter {
     name   = "name"
-    values =  ["RHEL-10-DevOps-Practice"]
+    values = ["Redhat-10-DevOps-Practice"] #
   }
 
   filter {
