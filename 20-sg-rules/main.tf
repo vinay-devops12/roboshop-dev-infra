@@ -28,6 +28,16 @@ resource "aws_security_group_rule" "mongodb_bastion" {
   source_security_group_id = local.bastion_sg_id
   description              = "Allow MongoDB connection from bastion service"
 }
+
+resource "aws_security_group_rule" "mongodb_bastion_27017" {
+  type                     = "ingress"
+  from_port                = 27017
+  to_port                  = 27017
+  protocol                 = "tcp"
+  security_group_id        = local.mongodb_sg_id
+  source_security_group_id = local.bastion_sg_id
+  description              = "Allow MongoDB connection from bastion host"
+}
   ## redis
 resource "aws_security_group_rule" "redis_user" {
   type                     = "ingress"
