@@ -19,6 +19,9 @@ set -ex
 component=$1
 environment=$2
 
+## specify path for ansible-palybook 
+export PATH="/usr/local/bin:/usr/bin:/bin:$PATH"
+
 dnf install python3-pip git -y
 
 pip3 install --break-system-packages ansible botocore boto3 || pip3 install ansible botocore boto3
