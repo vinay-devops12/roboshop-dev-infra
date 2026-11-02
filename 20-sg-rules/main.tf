@@ -68,7 +68,15 @@ resource "aws_security_group_rule" "redis_bastion" {
   source_security_group_id = local.bastion_sg_id
   description              = "Allow redis connection from bastion service"
 }
-
+resource "aws_security_group_rule" "redis_bastion_6379" {
+  type                     = "ingress"
+  from_port                = 6379
+  to_port                  = 6379
+  protocol                 = "tcp"
+  security_group_id        = local.redis_sg_id
+  source_security_group_id = local.bastion_sg_id
+  description              = "Allow redis port check from bastion host"
+}
     ## mysql
 resource "aws_security_group_rule" "mysql_shipping" {
   type                     = "ingress"
@@ -88,6 +96,16 @@ resource "aws_security_group_rule" "mysql_bastion" {
   source_security_group_id = local.bastion_sg_id
   description              = "Allow mysql connection from bastion service"
 }
+resource "aws_security_group_rule" "mysql_bastion_3306" {
+  type                     = "ingress"
+  from_port                = 3306
+  to_port                  = 3306
+  protocol                 = "tcp"
+  security_group_id        = local.mysql_sg_id
+  source_security_group_id = local.bastion_sg_id
+  description              = "Allow mysql connection from bastion host"
+}
+
      ## rabbitmq
 resource "aws_security_group_rule" "rabbitmq_payment" {
   type                     = "ingress"
@@ -107,6 +125,16 @@ resource "aws_security_group_rule" "rabbitmq_bastion" {
   source_security_group_id = local.bastion_sg_id
   description              = "Allow rabbitmq connection from bastion service"
 }
+resource "aws_security_group_rule" "rabbitmq_bastion_5672" {
+  type                     = "ingress"
+  from_port                = 5672
+  to_port                  = 5672
+  protocol                 = "tcp"
+  security_group_id        = local.rabbitmq_sg_id
+  source_security_group_id = local.bastion_sg_id
+  description              = "Allow rabbitmq connection from bastion host"
+}
+
        ## catalogue
 resource "aws_security_group_rule" "catalogue_backend_alb" {
   type                     = "ingress"
